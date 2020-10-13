@@ -11,7 +11,6 @@ install:
 
 script:
   - pytest
-  - pylint -f colorized Zeno
 
 deploy:
   provider: pypi
