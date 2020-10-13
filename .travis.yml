@@ -15,7 +15,7 @@ jobs:
       python: 3.8
       deploy:
         script:
-          - ./generate_setup.sh
+          - ./generate_setup.sh ${TRAVIS_BUILD_NUMBER}
         provider: pypi
         username: __token__
         password:
