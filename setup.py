@@ -5,7 +5,17 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-VERSION = '0.' + os.getenv('TRAVIS_BUILD_NUMBER', '0.0')
+VERSION = ''
+with open('__version__', 'rw+') as fh:
+    set_version = fh.readline()
+    build_number = os.getenv('TRAVIS_BUILD_NUMBER', '0.0')
+
+    if not set_version:
+        VERSION = '0.' + build_number
+        fh.write(VERSION)
+    else:
+        VERSION = set_version
+
 
 setup(
     name='ZenoMapper',
