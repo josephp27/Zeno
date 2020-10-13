@@ -10,7 +10,7 @@ setup(
     packages=['ZenoMapper'],
     license='Apache license 2.0',
     description='An Object Config Mapper (OCM)',
-    version='0.' + os.getenv("TRAVIS_BUILD_NUMBER", 0.0),
+    version='0.37.1',
     long_description=long_description,
     long_description_content_type="text/markdown",
     author='Joseph Procopio',
