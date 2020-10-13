@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='Zeno',
-    packages=['Zeno'],
+    name='ZenoMapper',
+    packages=['ZenoMapper'],
     license='Apache license 2.0',
     description='An Object Config Mapper (OCM)',
     long_description=long_description,
@@ -16,7 +16,7 @@ setup(
     keywords=['Zeno', 'OCM', 'Config', 'Configuration', 'Mapper', 'Object'],
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Apache license 2.0 License",
+        "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
 )
