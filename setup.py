@@ -9,7 +9,6 @@ VERSION = '0.' + os.getenv('TRAVIS_BUILD_NUMBER', '0.0')
 
 setup(
     name='ZenoMapper',
-    packages=['ZenoMapper'],
     license='Apache license 2.0',
     description='An Object Config Mapper (OCM)',
     version=VERSION,
