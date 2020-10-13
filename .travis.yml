@@ -1,14 +1,22 @@
 language: python
 python:
+- '3.5'
+- '3.6'
+- '3.7'
 - '3.8'
 install:
 - pip install -r requirements.txt
 script:
 - pytest
-deploy:
-  provider: pypi
-  username: __token__
-  password:
-    secure: SmGXPH883XDB6iHaoC5PourW2hrBBsfi0sRkaeTK8nHsoM5JyaITU2YpZTGOEWH00zUwGpgExlPGV/lkq0VLwgYfrsXEJ6Nz60T60SGvZPBTcq6Caa0sOQRLtuNsVajzdX8k6YA7/MxUADOv8oZBXwBr16tXxvEOJrzGzBF5C452VclcI2dMbJlqsqhvnD1Jw1AsAzKnJJdIcMXQU5OfLTpFRpUBvuBy349HyXbFzWOmFnwh6FU+GDEalAHfXyTxF3MeLfhn7owgbgtiq4NtbggIra/uOkUJGTEVYE/YVG9DN+BIdU1EXp/ttrORgDL76GYxGGDCqknSL6NCaNV97FqRUnUHSGdbX+KcgVOHexm0VDhDKELA1DQ6P1YIAMzNSOOuyYJBNOaMcYCxx0avHXyQ4jxKCXgHKBG7urQxMmnDjV1jlEBr97Glbkk9TKI8SsLBepO27uvNJKLTk+f940hjNH7tw1KjXwGeIxKEoI6AHxRdhaHcbPZ5O3ysn9dwyjDTnRORfa3dftgpjnJMZ5a6pwMsXv+mtDd3yhBp6r+xXzVzmDu1met8RpqElNJqPvPoi2B3vPbrFh+8DhHwcGVixlhWEYpmF6I5uUf+FYPggrzQDiWV61GazAq1I2i5WBUZJEpsiKYjbn8HOhNuw4M3lyBiHZYEYvzvjLU/qho=
-  on:
-    branch: main
+
+jobs:
+  include:
+    - stage: deploy
+      python: 3.8
+      deploy:
+        provider: pypi
+        username: __token__
+        password:
+          secure: SmGXPH883XDB6iHaoC5PourW2hrBBsfi0sRkaeTK8nHsoM5JyaITU2YpZTGOEWH00zUwGpgExlPGV/lkq0VLwgYfrsXEJ6Nz60T60SGvZPBTcq6Caa0sOQRLtuNsVajzdX8k6YA7/MxUADOv8oZBXwBr16tXxvEOJrzGzBF5C452VclcI2dMbJlqsqhvnD1Jw1AsAzKnJJdIcMXQU5OfLTpFRpUBvuBy349HyXbFzWOmFnwh6FU+GDEalAHfXyTxF3MeLfhn7owgbgtiq4NtbggIra/uOkUJGTEVYE/YVG9DN+BIdU1EXp/ttrORgDL76GYxGGDCqknSL6NCaNV97FqRUnUHSGdbX+KcgVOHexm0VDhDKELA1DQ6P1YIAMzNSOOuyYJBNOaMcYCxx0avHXyQ4jxKCXgHKBG7urQxMmnDjV1jlEBr97Glbkk9TKI8SsLBepO27uvNJKLTk+f940hjNH7tw1KjXwGeIxKEoI6AHxRdhaHcbPZ5O3ysn9dwyjDTnRORfa3dftgpjnJMZ5a6pwMsXv+mtDd3yhBp6r+xXzVzmDu1met8RpqElNJqPvPoi2B3vPbrFh+8DhHwcGVixlhWEYpmF6I5uUf+FYPggrzQDiWV61GazAq1I2i5WBUZJEpsiKYjbn8HOhNuw4M3lyBiHZYEYvzvjLU/qho=
+        on:
+          branch: main
