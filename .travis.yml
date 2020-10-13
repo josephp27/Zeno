@@ -14,7 +14,6 @@ jobs:
     - stage: deploy
       python: 3.8
       deploy:
-        script: generate_setup.sh
         provider: pypi
         username: __token__
         password:
