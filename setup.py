@@ -1,4 +1,5 @@
 import os
+
 from setuptools import setup
 
 with open("README.md", "r") as fh:
@@ -9,6 +10,7 @@ setup(
     packages=['ZenoMapper'],
     license='Apache license 2.0',
     description='An Object Config Mapper (OCM)',
+    version='0.' + os.environ["TRAVIS_BUILD_NUMBER"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     author='Joseph Procopio',
