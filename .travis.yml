@@ -1,20 +1,17 @@
 language: python
 python:
-  - "3.5"
-  - "3.6"
-  - "3.7"
-  - "3.8"
-
+- '3.5'
+- '3.6'
+- '3.7'
+- '3.8'
 install:
-  - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 script:
-  - pytest
-
+- pytest
 deploy:
   provider: pypi
   username: __token__
   password:
-    secure: MPNixzFcRmAuOh5gXS1CXFdDR/c6MVN9FxzVt/4yfyggGgfXfuz17LZio+cR19QX3HdPofnxBm38uBUKsYSps8LFt7TglnsYFUZXEnTnJ96ImFRuzKC11sYqZJV5crunwSB7DrXAzejIlqulK6/wkLq9otMZFEUR1B3BBbzdl78K9PVa0fgQzs7qWngB7mTVdXVkRDohsqrUfIFoRtW0ou7b9ho/ck8fiHM+Pa9Pwb+p9vTnEZzh60+vU2Et2fM+b5ffHxOeFypsqP93VrdgnkEpE/pK5B+ipXVo6a0JvF6hvww/V4q2Vp8ujkgGVNE2o49KKM27DqbzBzSHQlV7I+LZz/NVo4sF3iX2zir1Q2F2+jkPDrTew9D4cQbHKD6QJPD2Cb2kHOlzfkDgXtsmEOY1ldT7jrIfzRKofHJ0tWSjJIoxiu/WUA2y3laKHkmqYhVCRWkY31v0MZbbs8GG6qxNm4UhD3IZRtaSb54clkRnYV63K9dkj/FBbCIUEPzlwUYPAdNso3D9E10WqBiqTaugXPfuJJaJa8PGm1np2FjBPZtJNnPrxv5Kskk6z5Yfw+AY3QiTLoQlymNAm7VOX54DMhbDtgtiwYTdW6oos9mKSMmG+Z+LhWbQSbO+4Jj1CGXRtcfv2Z/eMg0nP3VUtHScLdrb0qj4ZYbpj9lBfpw=
+    secure: Cdbr17LxzW8PQBpywYY6GMHETEGYJsnwQZ/5w3KMb6Sf8iWIriD7EBuE4jRxRrPsz+MeCkDIV5QmHbfmqowZj8GgJAZ7RYfFWseB2ojIMpdb/Ubtrq3VQviKscaUwvdNZEhSatycNi4v1DWaOO2xQM30WInpjbCCOaWmLNblXZ001UzrhnBblWL7uzmRerfMHhY5xKL5vloReYdwRjwTZOSlT0/1hElWNv+E62/YozbuAavOR7/jqGIkBB3+xgi0p7mAu9xljFStzr1IYpdKuykJtYGM4dcd9WDSfXmI6/SiB5JMkKyoaRW/qr5akFxh+XBwjvkk/GetLIKRXSl8UiqFMR//P2rfal/zSCspwUyfXV8SgesCWC8WmdtnQSr3teKV2sVwYVJ1/jKa4eQR32rEKJUSfzSw7eH4LTkLxi7kk/+6MQGO1KKenrWMT3HY6jzjao1E39A52kSGWm7sNllTkxmH7GnuZDoY1Dtw9Ikh3fzW24LVBl+ncuokN9fAUypy7jgLs08qDeYeX4lGWScahSElktw7sHM2mEWQqk21J1QFt5WUPHBjrYsLH+c/8u6+nPsrFHq6Epz3LycGxKBCq1naJQFdXEmOmsnO+fxIfEH3NSdaL0cKvGf4O14SKSrwNOxwas32TRZSxJZYD0nZrwMXwdjR00wyFzeUfxs=
   on:
     branch: main
