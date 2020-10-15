@@ -18,6 +18,7 @@ jobs:
     - stage: deploy
       python: 3.8
       deploy:
+        skip_cleanup: true
         provider: pypi
         username: __token__
         password:
