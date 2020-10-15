@@ -7,6 +7,7 @@ python:
 before_install:
   - ls
   - echo $TRAVIS_BUILD_NUMBER > __version__
+  - ls
 install:
 - pip install -r requirements.txt
 script:
