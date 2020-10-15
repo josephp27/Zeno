@@ -1,18 +1,16 @@
 import os
 
 from setuptools import setup, find_packages
+from ZenoMapper import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
-
-with open('__version__', 'r') as fh:
-    VERSION = fh.read()
 
 setup(
     name='ZenoMapper',
     license='Apache license 2.0',
     description='An Object Config Mapper (OCM)',
-    version=VERSION,
+    version=__version__,
     long_description=long_description,
     long_description_content_type="text/markdown",
     author='Joseph Procopio',
