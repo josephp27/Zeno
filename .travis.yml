@@ -4,6 +4,8 @@ python:
 - '3.6'
 - '3.7'
 - '3.8'
+before_install:
+  echo $TRAVIS_BUILD_NUMBER > __version__
 install:
 - pip install -r requirements.txt
 script:
@@ -12,8 +14,6 @@ script:
 jobs:
   include:
     - stage: deploy
-      before_install:
-        echo $TRAVIS_BUILD_NUMBER > __version__
       python: 3.8
       deploy:
         provider: pypi
