@@ -5,7 +5,7 @@ python:
 - '3.7'
 - '3.8'
 before_install:
-  - pwd
+  - ls
   - echo $TRAVIS_BUILD_NUMBER > __version__
 install:
 - pip install -r requirements.txt
