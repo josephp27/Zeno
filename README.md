@@ -8,5 +8,3 @@
 
 
 This is a WIP, please come back within a week
-
-[![Downloads](https://pepy.tech/badge/zenomapper)](https://pepy.tech/project/zenomapper)
