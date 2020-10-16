@@ -79,3 +79,7 @@ Spring()['Data']['myList'] # ['first', 'second', 'third']
 Spring()['Data'].myList # ['first', 'second', 'third']
 Spring() # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encryptionKey': 'FakePassWord!', 'password': '!54353Ffesf34', 'replicaSet': 'FAKE-DB-531'}, 'second': 1, 'myList': ['first', 'second', 'third']}}
 ```
+## Types
+Zeno currently has 4 types, where auto conversion will happen based on the specified type. It also brings a little static typing to Python. The plan is to add more, but currently Zeno supports: `Integer`, `String`, `Boolean`, `List`. Supported types can be found [here](https://github.com/josephp27/Zeno/blob/main/ZenoMapper/Types.py)
+
+If you have another type you'd like but it isn't supported, etc. `None` can be used to tell Zeno to not handle conversion
