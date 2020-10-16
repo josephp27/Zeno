@@ -16,6 +16,12 @@ This is very much still in beta. The idea for this comes from ORMs like SqlAlche
 pip3 install ZenoMapper
 ```
 
+## Importing
+```python
+from ZenoMapper.Configuration import ConfigParser, Configuration
+from ZenoMapper.Types import String, Boolean, Integer, Lis
+```
+
 Zeno maps your configs to objects for you.
 ```yaml
 Spring:
