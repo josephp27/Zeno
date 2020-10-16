@@ -8,4 +8,70 @@
 </p>
 
 
-This is a WIP, please come back within a week
+## I heard you like ORMs, so I got you an OCM.
+
+This is very much still in beta. The idea for this comes from ORMs like SqlAlchemy and how Spring Boot uses `@ConfigurationProperties`
+
+Zeno maps your configs to objects for you.
+```yaml
+Spring:
+  Data:
+    MongoDb:
+      database: TESTDB
+      encryption: true
+      encryptionKey: "FakePassWord!"
+      password: "!54353Ffesf34"
+      replicaSet: FAKE-DB-531
+    second: 1
+    myList:
+      - first
+      - second
+      - third
+
+MyServer:
+  host: my.server.com
+  port: 8080
+```
+Looks like
+```python
+class Spring(Configuration):
+    """
+    loads in from data.yml. accessing nested sections can be done via nested classes
+    """
+
+    class Data:
+        class MongoDb:
+            database = String()
+            encryption = Boolean()  # conversion automatically happens when specifying the type
+            encryptionKey = String()
+            password = String()
+            replicaSet = String()
+
+        second = Integer()
+        myList = List()
+```
+And can now be accessed like:
+```python
+Spring().Data.myList  # ['first', 'second', 'third']
+Spring().Data.MongoDb.encryption is True  # True
+```
+## Using your custom configs with Zeno
+Using your own configs is easy with Zeno, simply inherit from ConfigParser and instantiate the `get_config()` function. Load in your file and Zeno will do the rest.
+```python
+class MyConfig(ConfigParser):
+    """
+    loading your own config is done via subclassing the ConfigParser class and implementing the
+    get_config function.
+    """
+
+    def get_config(self):
+        with open("examples/data.yml", 'r') as stream:
+            return yaml.safe_load(stream)
+```            
+## Hold up, that's nice but I still like using dictionary methods
+Well then person reading this, Zeno is for you. All Classes are dictionary class hybrids, so you can access them like plain old dictionaries when necessary.
+```python
+Spring()['Data']['myList'] # ['first', 'second', 'third']
+Spring()['Data'].myList # ['first', 'second', 'third']
+Spring() # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encryptionKey': 'FakePassWord!', 'password': '!54353Ffesf34', 'replicaSet': 'FAKE-DB-531'}, 'second': 1, 'myList': ['first', 'second', 'third']}}
+```
