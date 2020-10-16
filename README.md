@@ -11,16 +11,6 @@
 ## I heard you like ORMs, so I got you an OCM.
 
 This is very much still in beta. The idea for this comes from ORMs like SqlAlchemy and how Spring Boot uses `@ConfigurationProperties`
-## Install
-```bash
-pip3 install ZenoMapper
-```
-
-## Importing
-```python
-from ZenoMapper.Configuration import ConfigParser, Configuration
-from ZenoMapper.Types import String, Boolean, Integer, Lis
-```
 
 Zeno maps your configs to objects for you.
 ```yaml
@@ -65,6 +55,18 @@ And can now be accessed like:
 Spring().Data.myList  # ['first', 'second', 'third']
 Spring().Data.MongoDb.encryption is True  # True
 ```
+
+## Install
+```bash
+pip3 install ZenoMapper
+```
+
+## Import
+```python
+from ZenoMapper.Configuration import ConfigParser, Configuration
+from ZenoMapper.Types import String, Boolean, Integer, Lis
+```
+
 ## Using your custom configs with Zeno
 Using your own configs is easy with Zeno, simply inherit from ConfigParser and instantiate the `get_config()` function. Load in your file and Zeno will do the rest.
 ```python
