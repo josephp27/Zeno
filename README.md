@@ -64,7 +64,7 @@ pip3 install ZenoMapper
 ## Import
 ```python
 from ZenoMapper.Configuration import ConfigParser, Configuration
-from ZenoMapper.Types import String, Boolean, Integer, Lis
+from ZenoMapper.Types import String, Boolean, Integer, List
 ```
 
 ## Using your custom configs with Zeno
