@@ -96,6 +96,10 @@ class Spring(Configuration):
 ```python
 class MyConfig(Configuration):
     __section__ = 'Spring.Data.Mongodb'
+    
     database = String()
-    ...
+    encryption = Boolean()
+    encryptionKey = String()
+    password = String()
+    replicaSet = String()
 ```
