@@ -83,3 +83,19 @@ Spring() # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encr
 Zeno currently has 4 types, where auto conversion will happen based on the specified type. It also brings a little static typing to Python. The plan is to add more, but currently Zeno supports: `Integer`, `String`, `Boolean`, `List`. Supported types can be found [here](https://github.com/josephp27/Zeno/blob/main/ZenoMapper/Types.py)
 
 If you have another type you'd like but it isn't supported, etc. `None` can be used to tell Zeno to not handle conversion
+
+## Choosing What to Map
+Zeno is powerful. Only specify what you'd like to map and Zeno ignores the rest
+```python
+class Spring(Configuration):
+    class Data:
+        class MongoDb:
+            database = String()
+```
+### Using __sections__ to map super nested dictionaries/ignore nesting classes (WIP)
+```python
+class MyConfig(Configuration):
+    __section__ = 'Spring.Data.Mongodb'
+    database = String()
+    ...
+```
