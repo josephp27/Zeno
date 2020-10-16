@@ -14,8 +14,7 @@ class ConfigParser(object):
 def Config():
     subclasses = ConfigParser.__subclasses__()
     if len(subclasses) != 1:
-        raise Exception(
-            f"Only one class can sublcass Configure got: {', '.join([cls.__name__ for cls in subclasses])}")
+        raise Exception("Only one class can sublcass Configure got: " + ', '.join([cls.__name__ for cls in subclasses]))
     return subclasses[0]().get_config()
 
 
