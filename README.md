@@ -11,6 +11,10 @@
 ## I heard you like ORMs, so I got you an OCM.
 
 This is very much still in beta. The idea for this comes from ORMs like SqlAlchemy and how Spring Boot uses `@ConfigurationProperties`
+## Install
+```bash
+pip3 install ZenoMapper
+```
 
 Zeno maps your configs to objects for you.
 ```yaml
