@@ -38,7 +38,7 @@ MyServer:
 ```
 Looks like
 ```python
-class Spring(Configuration):
+class Spring(Configuration): #Inheriting from Configuration lets the parser know which class to modify
     """
     loads in from data.yml. accessing nested sections can be done via nested classes
     """
