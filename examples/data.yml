@@ -1,0 +1,17 @@
+Spring:
+  Data:
+    MongoDb:
+      database: TESTDB
+      encryption: true
+      encryptionKey: "FakePassWord!"
+      password: "!54353Ffesf34"
+      replicaSet: FAKE-DB-531
+    second: 1
+    myList:
+      - first
+      - second
+      - third
+
+MyServer:
+  host: my.server.com
+  port: 8080

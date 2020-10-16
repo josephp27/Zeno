@@ -26,3 +26,12 @@ def to_snake_case(section):
         (str) section in snake_case
     """
     return re.sub(r'(?<!^)(?=[A-Z])', '_', section).lower()
+
+
+def get_nested_dictionary(dictionary, keys):
+    unsearched_keys = keys
+    base = dictionary[unsearched_keys.pop(0)]
+    for key in unsearched_keys:
+        base = base[key]
+
+    return base

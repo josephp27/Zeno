@@ -1,11 +1,10 @@
-from abc import ABCMeta, abstractmethod
+from abc import abstractmethod
 
 
 class ConfigTypes(object):
     """
     Configuration Types base class. All subclasses must instantiate convert
     """
-    __metaclass__ = ABCMeta
 
     @abstractmethod
     def convert(self, obj):
