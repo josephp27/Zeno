@@ -119,6 +119,6 @@ class String(ConfigTypes):
             int - The object as a ascii normalized string
         """
         try:
-            return str(obj).decode('utf8')
+            return str(obj)
         except UnicodeEncodeError:
             return obj
