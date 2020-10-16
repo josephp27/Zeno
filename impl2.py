@@ -1,3 +1,3 @@
-from impl import MyClass
+from impl import General
 
-print(MyClass().general)
+print(General().Database)

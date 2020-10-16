@@ -8,5 +8,5 @@ class MyConfig(ConfigParser):
         return {'general': 'fdgfds'}
 
 
-class MyClass(Configuration):
+class GG(Configuration):
     general = String()
