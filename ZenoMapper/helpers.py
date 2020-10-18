@@ -28,10 +28,33 @@ def to_snake_case(section):
     return re.sub(r'(?<!^)(?=[A-Z])', '_', section).lower()
 
 
-def get_nested_dictionary(dictionary, keys):
-    unsearched_keys = keys
-    base = dictionary[unsearched_keys.pop(0)]
-    for key in unsearched_keys:
-        base = base[key]
+def traverse_dictionary(dictionary, keys):
+    """Searches dictionary for all keys in order
 
-    return base
+    Required Args:
+        dictionary (dict) - Dictionary to be searched
+        keys (list) - list of keys to be searched in order
+
+    Returns:
+        (str) value
+    """
+    curr_key = keys[0]
+    curr_dictionary = dictionary[curr_key]
+
+    for i in range(1, len(keys)):
+        curr_key = keys[i]
+        curr_dictionary = curr_dictionary[curr_key]
+
+    return curr_dictionary
+
+
+def convert_section_to_keys(section):
+    """Splits section into its keys to be searched in order
+
+    Required Args:
+        section (str) - Period delimited str
+
+    Returns:
+        (list) keys
+    """
+    return section.split('.')
