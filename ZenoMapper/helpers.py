@@ -40,7 +40,7 @@ def traverse_dictionary(dictionary, keys):
     """
     curr_key = keys[0]
     curr_dictionary = dictionary[curr_key]
-    
+
     for i in range(1, len(keys)):
         curr_key = keys[i]
         curr_dictionary = curr_dictionary[curr_key]
