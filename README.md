@@ -100,7 +100,7 @@ class Spring(Configuration):
         class MongoDb:
             database = String()
 ```
-### Using `__sections__` to map super nested dictionaries/ignore nesting classes
+### Using \_\_section\_\_ to map super nested dictionaries/ignore nesting classes
 ```python
 class MyConfig(Configuration):
     __section__ = 'Spring.Data.Mongodb'
