@@ -2,7 +2,7 @@ import types
 from abc import abstractmethod
 
 from ZenoMapper.Types import ConfigTypes
-from ZenoMapper.helpers import to_snake_case, merge_dictionaries, get_nested_dictionary
+from ZenoMapper.helpers import to_snake_case, merge_dictionaries, traverse_dictionary, convert_section_to_keys
 
 
 class ConfigParser(object):
@@ -25,10 +25,9 @@ class ConfigurationBase(type):
         """Called when the child class is instantiated"""
         obj = type.__call__(cls)
 
-        project = kwargs.get('project', None)
         super_class = kwargs.get('super_class', [])
 
-        all_dictionaries = cls.populate(obj, project, super_class)
+        all_dictionaries = cls.populate(obj, super_class)
         # update the object (dict) with all the dictionaries found
         obj.update(all_dictionaries)
         return obj
@@ -48,7 +47,7 @@ class ConfigurationBase(type):
         cls.variables = variables
         super(ConfigurationBase, cls).__init__(name)
 
-    def populate(cls, obj, project=None, super_class=[]):
+    def populate(cls, obj, super_class=[]):
         """Method called to populate all member variables
 
         Required Args:
@@ -60,9 +59,7 @@ class ConfigurationBase(type):
         variables = obj.variables
 
         # optionally specified section in the configured class.
-        # Note: project is a replacement for module. __module__ is a keyword that does weird things if used.
         lookup_key = variables.get('__section__', to_snake_case(obj.cls))
-        project = variables.get('__project__', project)
 
         # all variables and functions found
         config_variables = []
@@ -92,7 +89,7 @@ class ConfigurationBase(type):
             elif is_callable and is_user_defined:
                 # we want to instantiate it so the user doesnt have to, i.e. the __call__()
                 config_object = ConfigurationBase(name, cls.module, dict(variables[name].__dict__))
-                config_object = config_object.__call__(project=project, super_class=super_class + [obj.cls])
+                config_object = config_object.__call__(super_class=super_class + [obj.cls])
                 nested_dictionaries[name] = config_object
                 nested_classes.append((name, config_object))
 
@@ -104,7 +101,13 @@ class ConfigurationBase(type):
 
             for var in config_variables:
                 # set the attribute of the member variable found in the config lookup
-                config_var = get_nested_dictionary(config, super_class + [obj.cls])[var]
+                if __section__:
+                    lookup_keys = convert_section_to_keys(__section__)
+                else:
+                    lookup_keys = super_class + [obj.cls]
+
+                #traverse the dictionary using list of lookup keys
+                config_var = traverse_dictionary(config, lookup_keys)[var]
 
                 # get the user defined type None, String, Integer, List, etc and convert it
                 type_ = getattr(obj, var)
