@@ -59,7 +59,12 @@ class ConfigurationBase(type):
         variables = obj.variables
 
         # optionally specified section in the configured class.
-        lookup_key = variables.get('__section__', to_snake_case(obj.cls))
+        __section__ = variables.get('__section__', None)
+
+        if __section__:
+            lookup_keys = convert_section_to_keys(__section__)
+        else:
+            lookup_keys = super_class + [obj.cls]
 
         # all variables and functions found
         config_variables = []
@@ -89,7 +94,7 @@ class ConfigurationBase(type):
             elif is_callable and is_user_defined:
                 # we want to instantiate it so the user doesnt have to, i.e. the __call__()
                 config_object = ConfigurationBase(name, cls.module, dict(variables[name].__dict__))
-                config_object = config_object.__call__(super_class=super_class + [obj.cls])
+                config_object = config_object.__call__(super_class=lookup_keys)
                 nested_dictionaries[name] = config_object
                 nested_classes.append((name, config_object))
 
@@ -101,11 +106,6 @@ class ConfigurationBase(type):
 
             for var in config_variables:
                 # set the attribute of the member variable found in the config lookup
-                if __section__:
-                    lookup_keys = convert_section_to_keys(__section__)
-                else:
-                    lookup_keys = super_class + [obj.cls]
-
                 #traverse the dictionary using list of lookup keys
                 config_var = traverse_dictionary(config, lookup_keys)[var]
 

@@ -11,7 +11,7 @@ class MyConfig(ConfigParser):
     """
 
     def get_config(self):
-        with open("examples/data.yml", 'r') as stream:
+        with open("data.yml", 'r') as stream:
             return yaml.safe_load(stream)
 
 
@@ -36,7 +36,22 @@ class MyServer(Configuration):
     host = String()
     port = Integer()
 
+class SuperNested(Configuration):
+    """Specifying section"""
+    __section__ = 'Spring.Data.MongoDb'
+
+    database = String()
+    encryption = Boolean()
+    encryptionKey = String()
+    password = String()
+    replicaSet = String()
+
+    class Nested:
+        key = Integer()
+
 
 print(Spring().Data.myList)  # ['first', 'second', 'third']
 print(Spring().Data.MongoDb.encryption is True)  # True
 print(MyServer().host)  # my.server.com
+print(SuperNested().database) # TESTDB
+print(SuperNested().Nested.key) # True

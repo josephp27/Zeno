@@ -6,6 +6,8 @@ Spring:
       encryptionKey: "FakePassWord!"
       password: "!54353Ffesf34"
       replicaSet: FAKE-DB-531
+      Nested:
+        key: 5243
     second: 1
     myList:
       - first

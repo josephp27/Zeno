@@ -38,12 +38,14 @@ def traverse_dictionary(dictionary, keys):
     Returns:
         (str) value
     """
-    unsearched_keys = keys
-    base = dictionary[unsearched_keys.pop(0)]
-    for key in unsearched_keys:
-        base = base[key]
+    curr_key = keys[0]
+    curr_dictionary = dictionary[curr_key]
+    
+    for i in range(1, len(keys)):
+        curr_key = keys[i]
+        curr_dictionary = curr_dictionary[curr_key]
 
-    return base
+    return curr_dictionary
 
 
 def convert_section_to_keys(section):
