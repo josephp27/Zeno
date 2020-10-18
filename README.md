@@ -12,6 +12,10 @@
 
 This is very much still in beta. The idea for this comes from ORMs like SqlAlchemy and how Spring Boot uses `@ConfigurationProperties`
 
+| Library Version| Python     |
+| :------------- | :----------: |
+| 0.x (Beta) | 2.7 (Soon), 3.4+   |
+
 Zeno maps your configs to objects for you.
 ```yaml
 Spring:
