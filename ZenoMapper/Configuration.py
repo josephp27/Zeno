@@ -1,5 +1,6 @@
 import types
 from abc import abstractmethod
+import sys
 
 from ZenoMapper.Types import ConfigTypes
 from ZenoMapper.helpers import to_snake_case, merge_dictionaries, traverse_dictionary, convert_section_to_keys
@@ -118,11 +119,17 @@ class ConfigurationBase(type):
         # merge all the dictionaries found together
         return merge_dictionaries(nested_dictionaries, variables_dictionary)
 
+def with_metaclass():
+	if sys.version_info[0] >= 3:
+		return ConfigurationBase
+	return object
 
-class Configuration(dict, metaclass=ConfigurationBase):
+class Configuration(dict, metaclass=with_metaclass()):
     """
     Base class that all config classes should inherit from. Sets the metaclass
     """
+    # if sys.version_info[0] < 3:
+    # 	__metaclass__ = ConfigurationBase
 
     def __getattribute__(self, item):
         """if the value has been found, return it when trying to access said value
