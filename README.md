@@ -14,7 +14,7 @@ This is very much still in beta. The idea for this comes from ORMs like SqlAlche
 
 | Library Version| Python     |
 | :------------- | :----------: |
-| 0.x (Beta) | 2.7 (Soon), 3.4+   |
+| 0.x (Beta) | 2.7, 3.5+   |
 
 Zeno maps your configs to objects for you.
 ```yaml
