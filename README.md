@@ -62,7 +62,7 @@ Spring().Data.MongoDb.encryption is True  # True
 
 ## Install
 ```bash
-pip3 install ZenoMapper
+pip install ZenoMapper
 ```
 
 ## Import
