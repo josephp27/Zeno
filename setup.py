@@ -19,7 +19,11 @@ setup(
     url='https://github.com/josephp27/Zeno',
     keywords=['Zeno', 'OCM', 'Config', 'Configuration', 'Mapper', 'Object'],
     classifiers=[
-        "Programming Language :: Python :: 3",
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
