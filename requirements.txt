@@ -1,6 +1,7 @@
 wheel==0.33.6
 setuptools==43.0.0
 twine==1.14.0
+six==1.15.0
 
 # Testing
 mock==2.0.0
