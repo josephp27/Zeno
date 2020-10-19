@@ -70,7 +70,17 @@ pip install ZenoMapper
 from ZenoMapper.Configuration import ConfigParser, Configuration
 from ZenoMapper.Types import String, Boolean, Integer, List
 ```
-
+### Using \_\_section\_\_ to map super nested dictionaries/ignore nesting classes
+```python
+class MyConfig(Configuration):
+    __section__ = 'Spring.Data.Mongodb'
+    
+    database = String()
+    encryption = Boolean()
+    encryptionKey = String()
+    password = String()
+    replicaSet = String()
+```
 ## Using your custom configs with Zeno
 Using your own configs is easy with Zeno, simply inherit from ConfigParser and instantiate the `get_config()` function. Load in your file and Zeno will do the rest.
 ```python
@@ -84,19 +94,12 @@ class MyConfig(ConfigParser):
         with open("examples/data.yml", 'r') as stream:
             return yaml.safe_load(stream)
 ```            
-## Hold up, that's nice but I still like using dictionary methods
-Well then person reading this, Zeno is for you. All Classes are dictionary class hybrids, so you can access them like plain old dictionaries when necessary.
-```python
-Spring()['Data']['myList'] # ['first', 'second', 'third']
-Spring()['Data'].myList # ['first', 'second', 'third']
-Spring() # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encryptionKey': 'FakePassWord!', 'password': '!54353Ffesf34', 'replicaSet': 'FAKE-DB-531'}, 'second': 1, 'myList': ['first', 'second', 'third']}}
-```
 ## Types
 Zeno currently has 4 types, where auto conversion will happen based on the specified type. It also brings a little static typing to Python. The plan is to add more, but currently Zeno supports: `Integer`, `String`, `Boolean`, `List`. Supported types can be found [here](https://github.com/josephp27/Zeno/blob/main/ZenoMapper/Types.py)
 
 If you have another type you'd like but it isn't supported, etc. `None` can be used to tell Zeno to not handle conversion
 
-## Choosing What to Map
+## Choosing what to map
 Zeno is powerful. Only specify what you'd like to map and Zeno ignores the rest
 ```python
 class Spring(Configuration):
@@ -104,14 +107,10 @@ class Spring(Configuration):
         class MongoDb:
             database = String()
 ```
-### Using \_\_section\_\_ to map super nested dictionaries/ignore nesting classes
+## Hold up, that's nice but I still like using dictionary methods
+Well then person reading this, Zeno is for you. All Classes are dictionary class hybrids, so you can access them like plain old dictionaries when necessary.
 ```python
-class MyConfig(Configuration):
-    __section__ = 'Spring.Data.Mongodb'
-    
-    database = String()
-    encryption = Boolean()
-    encryptionKey = String()
-    password = String()
-    replicaSet = String()
+Spring()['Data']['myList'] # ['first', 'second', 'third']
+Spring()['Data'].myList # ['first', 'second', 'third']
+Spring() # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encryptionKey': 'FakePassWord!', 'password': '!54353Ffesf34', 'replicaSet': 'FAKE-DB-531'}, 'second': 1, 'myList': ['first', 'second', 'third']}}
 ```
