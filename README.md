@@ -91,6 +91,7 @@ class MyConfig(ConfigParser):
     """
 
     def get_config(self):
+        # Zeno is parser agnostic, as long as a dictionary is returned, it doesn't matter what type of config files you use
         with open("examples/data.yml", 'r') as stream:
             return yaml.safe_load(stream)
 ```            
