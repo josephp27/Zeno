@@ -56,8 +56,9 @@ class Spring(Configuration): #Inheriting from Configuration lets the parser know
 ```
 And can now be accessed like:
 ```python
-Spring().Data.myList  # ['first', 'second', 'third']
-Spring().Data.MongoDb.encryption is True  # True
+spring = Spring()
+spring.Data.myList  # ['first', 'second', 'third']
+spring.Data.MongoDb.encryption is True  # True
 ```
 
 ## Install
