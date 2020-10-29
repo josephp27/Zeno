@@ -17,6 +17,9 @@ setup(
     packages=find_packages(exclude=['test', 'tests']),
     options={'bdist_wheel': {'universal': True}},
     url='https://github.com/josephp27/Zeno',
+    install_requires=[
+        'six>=1.15.0'
+    ],
     keywords=['Zeno', 'OCM', 'Config', 'Configuration', 'Mapper', 'Object'],
     classifiers=[
         'Programming Language :: Python :: 2.7',
