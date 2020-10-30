@@ -3,10 +3,9 @@
 <p align="center">
 <a href="https://travis-ci.com/josephp27/Zeno"><img src="https://travis-ci.com/josephp27/Zeno.svg?branch=main" alt="Build" height="18"></a>
 <a href="https://badge.fury.io/py/ZenoMapper"><img src="https://badge.fury.io/py/ZenoMapper.svg" alt="PyPI version" height="18"></a>
-<a href="https://pepy.tech/project/zenomapper"><img src="https://static.pepy.tech/personalized-badge/zenomapper?period=month&units=none&left_color=black&right_color=orange&left_text=Downloads" alt="Downloads" height="18"></a>
+<a href="https://pepy.tech/project/zenomapper"><img src="https://pepy.tech/badge/zenomapper" alt="Downloads" height="18"></a>
 <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License" height="18"></a>
 </p>
-
 
 ## I heard you like ORMs, so I got you an OCM.
 
