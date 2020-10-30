@@ -111,9 +111,11 @@ class Spring(Configuration):
 ## Hold up, that's nice but I still like using dictionary methods
 Well then person reading this, Zeno is for you. All Classes are dictionary class hybrids, so you can access them like plain old dictionaries when necessary.
 ```python
-Spring()['Data']['myList'] # ['first', 'second', 'third']
-Spring()['Data'].myList # ['first', 'second', 'third']
-Spring() # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encryptionKey': 'FakePassWord!', 'password': '!54353Ffesf34', 'replicaSet': 'FAKE-DB-531'}, 'second': 1, 'myList': ['first', 'second', 'third']}}
+spring.Data.myList # ['first', 'second', 'third']
+spring['Data']['myList'] # ['first', 'second', 'third']
+spring['Data'].myList # ['first', 'second', 'third']
+spring.Data['myList'] # ['first', 'second', 'third']
+spring # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encryptionKey': 'FakePassWord!', 'password': '!54353Ffesf34', 'replicaSet': 'FAKE-DB-531'}, 'second': 1, 'myList': ['first', 'second', 'third']}}
 ```
 
 ## Supports
