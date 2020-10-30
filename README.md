@@ -115,3 +115,10 @@ Spring()['Data']['myList'] # ['first', 'second', 'third']
 Spring()['Data'].myList # ['first', 'second', 'third']
 Spring() # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encryptionKey': 'FakePassWord!', 'password': '!54353Ffesf34', 'replicaSet': 'FAKE-DB-531'}, 'second': 1, 'myList': ['first', 'second', 'third']}}
 ```
+
+## Supports
+- Any parser 
+  - YAML
+  - INI
+  - etc, as long as it parses into a dictionary
+- Automatic type conversion
