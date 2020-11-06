@@ -1,64 +1,8 @@
 """Configuration for tests"""
 
-# pylint: disable=unused-import
 from unittest import TestCase
-from ZenoMapper import ConfigParser, Configuration, String, Boolean, Integer, List
 
-parsed_yml = {
-    'Spring': {
-        'Data': {
-            'MongoDb': {
-                'database': 'TESTDB', 
-                'encryption': True, 
-                'encryptionKey': 'FakePassWord!', 
-                'password': '!54353Ffesf34', 
-                'replicaSet': 'FAKE-DB-531', 
-                'Nested': {
-                    'key': 5243
-                    }
-                }, 
-            'second': 1, 
-            'myList': ['first', 'second', 'third']
-        }
-    }, 
-    'MyServer': {
-        'host': 'my.server.com', 
-        'port': 8080
-    }
-}
-
-class TestConfig(ConfigParser):
-    def get_config(self):
-        return parsed_yml
-
-class Spring(Configuration):
-    class Data:
-        class MongoDb:
-            database = String()
-            encryption = Boolean()
-            encryptionKey = String()
-            password = String()
-            replicaSet = String()
-            class Nested:
-                key = Integer()
-
-        second = Integer()
-        myList = List()
-
-class SuperNested(Configuration):
-    __section__ = 'Spring.Data.MongoDb'
-
-    database = String()
-    encryption = Boolean()
-    encryptionKey = String()
-    password = String()
-    replicaSet = String()
-
-    class Nested:
-        key = Integer()
-
-class MyServer(Configuration):
-    host = String()
+from test import Spring, parsed_yml, SuperNested, MyServer
 
 
 class TestNested(TestCase):
@@ -98,6 +42,7 @@ class TestNested(TestCase):
     def test_nested_loads_nested_dot_notation_nested_key(self):
         self.assertEqual(Spring().Data.MongoDb.Nested.key, 5243)
 
+
 class TestSuperNested(TestCase):
     def test_SuperNested_section_skips_needing_to_nest_classes_db(self):
         self.assertEqual(SuperNested().database, 'TESTDB')
@@ -116,6 +61,7 @@ class TestSuperNested(TestCase):
 
     def test_SuperNested_section_skips_needing_to_nest_classes_nested_key(self):
         self.assertEqual(SuperNested().Nested.key, 5243)
+
 
 class TestModifyConfig(TestCase):
     def test_MyServer_has_one_attribute_when_only_one_specified(self):

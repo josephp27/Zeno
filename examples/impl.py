@@ -36,6 +36,7 @@ class MyServer(Configuration):
     host = String()
     port = Integer()
 
+
 class SuperNested(Configuration):
     """Specifying section"""
     __section__ = 'Spring.Data.MongoDb'
@@ -53,5 +54,5 @@ class SuperNested(Configuration):
 print(Spring().Data.myList)  # ['first', 'second', 'third']
 print(Spring().Data.MongoDb.encryption is True)  # True
 print(MyServer().host)  # my.server.com
-print(SuperNested().database) # TESTDB
-print(SuperNested().Nested.key) # True
+print(SuperNested().database)  # TESTDB
+print(SuperNested().Nested.key)  # True

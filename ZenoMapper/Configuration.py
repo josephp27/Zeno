@@ -1,22 +1,28 @@
 import types
 from abc import abstractmethod
-import sys
+
+from six import with_metaclass
 
 from ZenoMapper.Types import ConfigTypes
-from ZenoMapper.helpers import to_snake_case, merge_dictionaries, traverse_dictionary, convert_section_to_keys
-from six import with_metaclass
+from ZenoMapper.helpers import merge_dictionaries, traverse_dictionary, convert_section_to_keys
 
 
 class ConfigParser(object):
+    """The user inherits from this class, overloads get_config and returns a dictionary object"""
+
     @abstractmethod
     def get_config(self):
+        """method to instantiate. must return a dictionary object"""
         pass
 
 
-def Config():
+def get_settings():
+    """function to get settings from the user inherited subclass ConfigParser"""
     subclasses = ConfigParser.__subclasses__()
+
     if len(subclasses) != 1:
-        raise Exception("Only one class can sublcass Configure got: " + ', '.join([cls.__name__ for cls in subclasses]))
+        raise Exception("Only one class can subclass Configure got: " + ', '.join([cls.__name__ for cls in subclasses]))
+
     return subclasses[0]().get_config()
 
 
@@ -104,11 +110,11 @@ class ConfigurationBase(type):
         # this is down here, because config makes multiple api calls, so doing it all at once saves precious
         # networking calls
         if config_variables:
-            config = Config()
+            config = get_settings()
 
             for var in config_variables:
                 # set the attribute of the member variable found in the config lookup
-                #traverse the dictionary using list of lookup keys
+                # traverse the dictionary using list of lookup keys
                 config_var = traverse_dictionary(config, lookup_keys)[var]
 
                 # get the user defined type None, String, Integer, List, etc and convert it
