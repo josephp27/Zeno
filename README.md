@@ -59,7 +59,14 @@ spring = Spring()
 spring.Data.myList  # ['first', 'second', 'third']
 spring.Data.MongoDb.encryption is True  # True
 ```
+## Don't Like Classes?
+Classes are a powerful way for autocompletion, type hints and auto conversion to those types. However, if it isn't for you, calling Zeno directly can be done. The parameter to the constructor is the path within the dictionary. If no parameter is set, it will map the whole dictionary. More examples can be found [here](https://github.com/josephp27/Zeno/blob/231bb39d884cc8f30a742c68da7c6b1121128214/examples/impl.py#L61)
+```python
+from ZenoMapper.zeno import Zeno
 
+zeno = Zeno('Spring.Data.MongoDb')
+zeno.database  # TESTDB
+```
 ## Install
 ```bash
 pip install ZenoMapper
