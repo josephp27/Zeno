@@ -20,7 +20,8 @@ setup(
     install_requires=[
         'six>=1.15.0'
     ],
-    keywords=['zeno', 'map-zeno', 'ocm', 'config-mapper', 'dictionaries', 'types', 'settings', 'settings-management', 'yml', 'yaml', 'ini', 'configuration', 'parser', 'orm', 'object-mapper],
+    keywords=['zeno', 'map-zeno', 'ocm', 'config-mapper', 'dictionaries', 'types', 'settings', 'settings-management',
+              'yml', 'yaml', 'ini', 'configuration', 'parser', 'orm', 'object-mapper'],
     classifiers=[
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
