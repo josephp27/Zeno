@@ -2,6 +2,7 @@ import yaml
 
 from ZenoMapper.Configuration import ConfigParser, Configuration
 from ZenoMapper.Types import String, Boolean, Integer, List
+from ZenoMapper.zeno import Zeno
 
 
 class MyConfig(ConfigParser):
@@ -56,3 +57,13 @@ print(Spring().Data.MongoDb.encryption is True)  # True
 print(MyServer().host)  # my.server.com
 print(SuperNested().database)  # TESTDB
 print(SuperNested().Nested.key)  # True
+
+# this method is used if specifying a class is not ideal for the user
+zeno = Zeno()
+print(zeno.Spring.Data.MongoDb.database)  # TESTDB
+
+# if the constructor is specified, it denotes how to search withing the yml file starting
+# in the section mongodb withing the data section, within the spring section
+# in this case it will be all these member variables: database encryption encryptionKey password replicaSet
+zeno_2 = Zeno('Spring.Data.MongoDb')
+print(zeno_2.database)  # TESTDB
