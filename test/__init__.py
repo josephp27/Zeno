@@ -20,12 +20,16 @@ parsed_yml = {
     'MyServer': {
         'host': 'my.server.com',
         'port': 8080
+    },
+    'lower': {
+        'CaseSection': True
     }
 }
 
 
 class TestConfig(ConfigParser):
-    def get_config(self):
+    @staticmethod
+    def get_config():
         return parsed_yml
 
 
@@ -60,3 +64,7 @@ class SuperNested(Configuration):
 
 class MyServer(Configuration):
     host = String()
+
+
+class Lower(Configuration):
+    CaseSection = Boolean()

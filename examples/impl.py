@@ -10,10 +10,17 @@ class MyConfig(ConfigParser):
     loading your own config is done via subclassing the ConfigParser class and implementing the
     get_config function.
     """
+    cache = None
 
-    def get_config(self):
-        with open("data.yml", 'r') as stream:
-            return yaml.safe_load(stream)
+    @staticmethod
+    def get_config():
+
+        # each time an object is instantiated, this is called, so let's cache the results to increase performance
+        if not MyConfig.cache:
+            with open("data.yml", 'r') as stream:
+                MyConfig.cache = yaml.safe_load(stream)
+
+        return MyConfig.cache
 
 
 class Spring(Configuration):

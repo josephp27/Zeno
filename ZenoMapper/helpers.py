@@ -36,16 +36,43 @@ def traverse_dictionary(dictionary, keys):
         keys (list) - list of keys to be searched in order
 
     Returns:
-        (str) value
+        (dict) value
     """
-    curr_key = keys[0]
-    curr_dictionary = dictionary[curr_key]
+    curr_dictionary = dictionary
 
-    for i in range(1, len(keys)):
-        curr_key = keys[i]
-        curr_dictionary = curr_dictionary[curr_key]
+    for key in keys:
+        curr_dictionary = get_dict(curr_dictionary, key)
 
     return curr_dictionary
+
+
+def get_dict(dictionary, key):
+    """Attempts to get value from dictionary
+
+    Required Args:
+        dictionary (dict) - Dictionary to be searched
+        keys (list) - list of keys to be searched in order
+
+    Returns:
+        (dict) value
+
+    Raises:
+        KeyError
+    """
+    try:
+        # get the value as is
+        return dictionary[key]
+    except KeyError:
+        pass
+
+    try:
+        # lower the value then try to get it
+        return dictionary[key.lower()]
+    except KeyError:
+        pass
+
+    # snake case it then try to get
+    return dictionary[to_snake_case(key)]
 
 
 def convert_section_to_keys(section):

@@ -17,3 +17,6 @@ Spring:
 MyServer:
   host: my.server.com
   port: 8080
+
+lower:
+  case_section: true

@@ -10,8 +10,9 @@ from ZenoMapper.helpers import merge_dictionaries, traverse_dictionary, convert_
 class ConfigParser(object):
     """The user inherits from this class, overloads get_config and returns a dictionary object"""
 
+    @staticmethod
     @abstractmethod
-    def get_config(self):
+    def get_config():
         """method to instantiate. must return a dictionary object"""
         pass
 
@@ -23,7 +24,7 @@ def get_settings():
     if len(subclasses) != 1:
         raise Exception("Only one class can subclass Configure got: " + ', '.join([cls.__name__ for cls in subclasses]))
 
-    return subclasses[0]().get_config()
+    return subclasses[0].get_config()
 
 
 class ConfigurationBase(type):

@@ -2,7 +2,7 @@
 
 from unittest import TestCase
 
-from test import Spring, parsed_yml, SuperNested, MyServer
+from test import Spring, parsed_yml, SuperNested, MyServer, Lower
 
 
 class TestNested(TestCase):
@@ -66,3 +66,11 @@ class TestSuperNested(TestCase):
 class TestModifyConfig(TestCase):
     def test_MyServer_has_one_attribute_when_only_one_specified(self):
         self.assertEqual(MyServer(), {'host': 'my.server.com'})
+
+
+class TestGetDictionaries(TestCase):
+    def test_can_find_key_if_lower(self):
+        self.assertEqual(Lower(), {'CaseSection': True})
+
+    def test_can_find_key_if_CamelCase(self):
+        self.assertEqual(Lower().CaseSection, True)
