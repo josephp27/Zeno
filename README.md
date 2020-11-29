@@ -103,7 +103,7 @@ class MyConfig(ConfigParser):
     def get_config():
         
         # each time an object is instantiated, this is called, so let's cache the results to increase performance
-        if not MyConfig.cache:
+        if MyConfig.cache is None:
             with open("data.yml", 'r') as stream:
                 MyConfig.cache = yaml.safe_load(stream)
 
