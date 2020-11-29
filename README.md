@@ -13,6 +13,7 @@ This is very much still in beta. The idea for this comes from ORMs like SqlAlche
 
 | Library Version| Python     |
 | :------------- | :----------: |
+| 1.x.x | 2.7, 3.5+   |
 | 0.x (Beta) | 2.7, 3.5+   |
 
 Zeno maps your configs to objects for you.
@@ -137,3 +138,14 @@ spring # {'Data': {'MongoDb': {'database': 'TESTDB', 'encryption': True, 'encryp
   - INI
   - etc, as long as it parses into a dictionary
 - Automatic type conversion
+
+## Don't Break Python Naming Conventions!
+Classes can fuzzy match while not breaking Python's class naming conventions
+```yaml
+lower:
+  case_section: true
+```
+```python
+class Lower(Configuration):
+    CaseSection = Boolean()
+```
