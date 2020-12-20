@@ -1,8 +1,5 @@
 from setuptools import setup, find_packages
 
-with open("__version__", "r") as fh:
-    version = fh.read().strip('\n')
-
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
@@ -10,7 +7,6 @@ setup(
     name='ZenoMapper',
     license='Apache license 2.0',
     description='An Object Config Mapper (OCM)',
-    version=version,
     long_description=long_description,
     long_description_content_type="text/markdown",
     author='Joseph Procopio',

@@ -6,7 +6,8 @@ python:
   - '3.7'
   - '3.8'
 before_install:
-  - echo "1.0.$((TRAVIS_BUILD_NUMBER-132))" > __version__
+  - sed -i '$ d' setup.cfg
+  - echo "version = 1.0.$((TRAVIS_BUILD_NUMBER-132))" >> setup.cfg
 install:
   - pip install -r requirements.txt
 script:
