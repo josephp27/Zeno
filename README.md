@@ -9,7 +9,7 @@
 
 ## I heard you like ORMs, so I got you an OCM.
 
-This is very much still in beta. The idea for this comes from ORMs like SqlAlchemy and how Spring Boot uses `@ConfigurationProperties`
+The idea for this comes from ORMs like SqlAlchemy and how Spring Boot uses `@ConfigurationProperties`
 
 | Library Version| Python     |
 | :------------- | :----------: |
