@@ -114,6 +114,46 @@ Zeno currently has 4 types, where auto conversion will happen based on the speci
 
 If you have another type you'd like but it isn't supported, etc. `None` can be used to tell Zeno to not handle conversion
 
+### Custom Types
+Users can specify their own types by inheriting from ConfigTypes
+```python
+class AppConf(ConfigTypes):
+    """
+    AppConf class to be used with Configuration class
+    """
+
+    def __init__(self, name, to_type):
+        self.name = name
+        self.convert_to_type = to_type
+
+    def convert(self, obj):
+        """Method called to convert obj to its specified convert type
+        NOTE: if the environment is production, it will first get it from appconf and override the one in the config file
+
+        Required Args:
+            obj (obj) - The object to be converted
+
+        returned:
+            obj - The object as the specified type
+        """
+        if os.environ.get('ENVIRONMENT') == 'production':
+            # we are in production and using appconf to get our values
+            obj = parse_appconf()[self.name]
+
+        # now convert it to the specified to_type
+        return self.convert_to_type().convert(obj)
+```
+and then can be called like the other types
+```python
+class Database(Configuration):
+    """section for database"""
+    __project__ = 'my_project'
+
+    dbname = String()
+    # you can even send in another type to do a later conversion within your new type
+    host = AppConf('host', String)
+    port = AppConf('port', Integer)
+```
 ## Choosing what to map
 Zeno is powerful. Only specify what you'd like to map and Zeno ignores the rest
 ```python
@@ -122,6 +162,7 @@ class Spring(Configuration):
         class MongoDb:
             database = String()
 ```
+
 ## Hold up, that's nice but I still like using dictionary methods
 Well then person reading this, Zeno is for you. All Classes are dictionary class hybrids, so you can access them like plain old dictionaries when necessary.
 ```python
