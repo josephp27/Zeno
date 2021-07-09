@@ -102,7 +102,8 @@ class MyConfig(ConfigParser):
     @staticmethod
     def get_config():
         
-        # each time an object is instantiated, this is called, so let's cache the results to increase performance
+        # each time an object is instantiated, this is called, 
+        # so let's cache the results to increase performance
         if MyConfig.cache is None:
             with open("data.yml", 'r') as stream:
                 MyConfig.cache = yaml.safe_load(stream)
@@ -128,7 +129,8 @@ class AppConf(ConfigTypes):
 
     def convert(self, obj):
         """Method called to convert obj to its specified convert type
-        NOTE: if the environment is production, it will first get it from appconf and override the one in the config file
+        NOTE: if the environment is production, it will first get it from appconf
+              and override the one in the config file
 
         Required Args:
             obj (obj) - The object to be converted
