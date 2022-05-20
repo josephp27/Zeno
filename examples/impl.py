@@ -12,7 +12,6 @@ class MyConfig(ConfigParser):
     loading your own config is done via subclassing the ConfigParser class and implementing the
     get_config function.
     """
-    cache = None
 
     @staticmethod
     @lru_cache(maxsize=None)  # @cache if you're on python3.9 or later
