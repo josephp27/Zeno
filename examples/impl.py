@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 import yaml
 
 from ZenoMapper.Configuration import ConfigParser, Configuration
@@ -13,14 +15,11 @@ class MyConfig(ConfigParser):
     cache = None
 
     @staticmethod
+    @lru_cache(maxsize=None)  # @cache if you're on python3.9 or later
     def get_config():
-
         # each time an object is instantiated, this is called, so let's cache the results to increase performance
-        if not MyConfig.cache:
-            with open("data.yml", 'r') as stream:
-                MyConfig.cache = yaml.safe_load(stream)
-
-        return MyConfig.cache
+        with open("data.yml", 'r') as stream:
+            return yaml.safe_load(stream)
 
 
 class Spring(Configuration):
