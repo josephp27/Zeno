@@ -96,19 +96,15 @@ class MyConfig(ConfigParser):
     """
     loading your own config is done via subclassing the ConfigParser class and implementing the
     get_config function.
+    
+    each time an object is instantiated, this is called, so cache the results to increase performance with the @lru_cache decorator
     """
-    cache = None
 
     @staticmethod
+    @lru_cache(maxsize=None)  # @cache if you're on python3.9 or later
     def get_config():
-        
-        # each time an object is instantiated, this is called, 
-        # so let's cache the results to increase performance
-        if MyConfig.cache is None:
-            with open("data.yml", 'r') as stream:
-                MyConfig.cache = yaml.safe_load(stream)
-
-        return MyConfig.cache
+        with open("data.yml", 'r') as stream:
+            return yaml.safe_load(stream)
 ```            
 ## Types
 Zeno currently has 4 types, where auto conversion will happen based on the specified type. It also brings a little static typing to Python. The plan is to add more, but currently Zeno supports: `Integer`, `String`, `Boolean`, `List`. Supported types can be found [here](https://github.com/josephp27/Zeno/blob/main/ZenoMapper/Types.py)
